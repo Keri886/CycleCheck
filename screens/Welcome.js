@@ -56,7 +56,7 @@ const Welcome = ({ navigation }) => {
                 }}>Your companion for tracking menstrual cycles and health.</Text>
                 
           </View>
-
+{/* Login and Signup Button */}
           <Button
             title="Join Now"
             onPress={() => navigation.navigate("Signup")}
