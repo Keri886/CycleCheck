@@ -1,15 +1,37 @@
 import { View, Text, Image, Pressable, TextInput, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import { useNavigation } from '@react-navigation/core'
+import React, { useEffect,useState } from 'react'
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLORS from '../constants/colors';
 import { Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox"
 // need -npx expo install expo-checkbox
 import Button from '../components/Button';
+import { auth } from '../firebase';
+import {createUserWithEmailAndPassword} from 'firebase/auth'; 
 
 const Signup = ({ navigation }) => {
     const [isPasswordShown, setIsPasswordShown] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+ 
+
+
+// Help create email and password and send to firebase
+    const handleSignUp = () => {
+    
+        createUserWithEmailAndPassword(auth,email, password)
+          .then(userCredentials => {
+            const user = userCredentials.user;
+            console.log('Registered with:', user.email);
+            navigation.navigate('Home');
+        
+          })
+          .catch(error => alert(error.message))
+      }
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
             <View style={{ flex: 1, marginHorizontal: 22 }}>
@@ -46,6 +68,8 @@ const Signup = ({ navigation }) => {
                         <TextInput
                             placeholder='Enter your email address'
                             placeholderTextColor={COLORS.black}
+                            value={email}
+                            onChangeText={text => setEmail(text)}
                             keyboardType='email-address'
                             style={{
                                 width: "100%"
@@ -76,6 +100,8 @@ const Signup = ({ navigation }) => {
                         <TextInput
                             placeholder='Enter your password'
                             placeholderTextColor={COLORS.black}
+                            value={password}
+                            onChangeText={text => setPassword(text)}
                             secureTextEntry={isPasswordShown}
                             style={{
                                 width: "100%"
@@ -99,8 +125,8 @@ const Signup = ({ navigation }) => {
 
                         </TouchableOpacity>
                     </View>
-                </View>
-{/*check the term and conditions */} 
+                </View> 
+    {/*check the term and conditions */} 
                 <View style={{
                     flexDirection: 'row',
                     marginVertical: 6
@@ -115,9 +141,11 @@ const Signup = ({ navigation }) => {
                     <Text>I aggree to the terms and conditions</Text>
                 </View>
 
+    {/* Sign Up Button  */} 
+
                 <Button
                     title="Sign Up"
-                    filled
+                    onPress={handleSignUp}
                     style={{
                         marginTop: 18,
                         marginBottom: 4,
