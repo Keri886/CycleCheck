@@ -4,7 +4,8 @@ import React from 'react'
 export default function Trends({navigation}){
   return (
     <View style= {{flex: 1, alignItems: 'center', justifyContent:'center'}}>
-      <Text>Trends Screen</Text>
+      <Text
+      onPress={() => navigation.navigate('Home')}>Trends Screen</Text>
     </View>
   )
 }

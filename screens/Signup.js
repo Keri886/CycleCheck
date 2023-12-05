@@ -26,7 +26,7 @@ const Signup = ({ navigation }) => {
           .then(userCredentials => {
             const user = userCredentials.user;
             console.log('Registered with:', user.email);
-            navigation.navigate('Home');
+            navigation.navigate('MainApp');
         
           })
           .catch(error => alert(error.message))

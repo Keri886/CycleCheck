@@ -25,7 +25,7 @@ const handleLogin = () => {
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('Logged in with:', user.email);
-        navigation.navigate('Home');
+        navigation.navigate('MainApp');
       })
       .catch(error => alert("Incorrect Email/Password."))
   }
