@@ -10,10 +10,11 @@ import { auth } from '../firebase';
 import {signInWithEmailAndPassword} from 'firebase/auth'; 
 
 
+
 const Login = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isPasswordShown, setIsPasswordShown] = useState(false);
+    const [isPasswordShown, setIsPasswordShown] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
 
 
