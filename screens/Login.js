@@ -6,9 +6,8 @@ import { Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox"
 // need -npx expo install expo-checkbox
 import Button from '../components/Button';
-import { auth } from '../firebase';
+import { auth } from '../firebase/firebase';
 import {signInWithEmailAndPassword} from 'firebase/auth'; 
-
 
 
 const Login = ({ navigation }) => {
@@ -138,7 +137,7 @@ const handleLogin = () => {
 
                     <Text>Remenber Me</Text>
                 </View>
-
+{/*Login Button */} 
                 <Button  
                     title="Login"
                     onPress={handleLogin}

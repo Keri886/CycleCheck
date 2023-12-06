@@ -7,12 +7,14 @@ import { Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox"
 // need -npx expo install expo-checkbox
 import Button from '../components/Button';
-import { auth } from '../firebase';
+import { db,auth } from '../firebase/firebase';
 import {createUserWithEmailAndPassword} from 'firebase/auth'; 
+import { doc, setDoc } from "firebase/firestore"; 
 
 const Signup = ({ navigation }) => {
     const [isPasswordShown, setIsPasswordShown] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -25,6 +27,13 @@ const Signup = ({ navigation }) => {
         createUserWithEmailAndPassword(auth,email, password)
           .then(userCredentials => {
             const user = userCredentials.user;
+             setDoc(doc(db, "users", user.uid), {
+                Name: username,
+                Email: email,
+                password: password,
+
+              });
+              
             console.log('Registered with:', user.email);
             navigation.navigate('MainApp');
         
@@ -45,8 +54,42 @@ const Signup = ({ navigation }) => {
                         Create Account
                     </Text>
 
+
+    {/*Input Username  */}                
+    </View>
+
+<View style={{ marginBottom: 12 }}>
+    <Text style={{
+        fontSize: 16,
+        fontWeight: 400,
+        marginVertical: 8
+    }}>Username</Text>
+
+    <View style={{
+        width: "100%",
+        height: 48,
+        borderColor: COLORS.black,
+        borderWidth: 1,
+        borderRadius: 8,
+        alignItems: "center",
+        justifyContent: "center",
+        paddingLeft: 22
+    }}>
+        <TextInput
+            placeholder='Enter your username'
+            placeholderTextColor={COLORS.black}
+            value={username}
+            onChangeText={text => setUsername(text)}
+            keyboardType='email-address'
+            style={{
+                width: "100%"
+            }}
+        />
+    </View>
+</View>
+
     {/*Input Email  */}                
-                </View>
+                
 
                 <View style={{ marginBottom: 12 }}>
                     <Text style={{
@@ -138,7 +181,7 @@ const Signup = ({ navigation }) => {
                         color={isChecked ? COLORS.primary : undefined}
                     />
 
-                    <Text>I aggree to the terms and conditions</Text>
+                    <Text>I agree to the terms and conditions</Text>
                 </View>
 
     {/* Sign Up Button  */} 

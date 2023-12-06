@@ -36,6 +36,7 @@ function MainAppTabs() {
         },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
+        
       })}
     >
       <Tab.Screen name="Home" component={Home} />
