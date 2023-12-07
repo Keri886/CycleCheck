@@ -11,12 +11,13 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 const Home = () => {
-  const [temperature, setTemperature] = useState('');
+  const [temperature, setTemperature] = useState();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   //const { authUser } = useAuth();
   const auth = getAuth();
   const user = auth.currentUser;
+  
 
   const onChange = (event, selectedDate) => {
     setShowDatePicker(Platform.OS === 'ios'); // If iOS, keep the picker open
@@ -27,7 +28,10 @@ const Home = () => {
     setShowDatePicker(true);
   };
 
+  
+
   const handleSubmit = async () => {
+    
     if (!temperature) {
       Alert.alert('Input Required', 'Please enter your temperature.');
       return;
@@ -70,6 +74,7 @@ const Home = () => {
         style={styles.input}
         value={temperature}
         onChangeText={setTemperature}
+        type = "number"
         placeholder="Enter temperature"
         keyboardType="default"
       />
