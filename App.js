@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 // need -npm install @react-navigation/native-stack
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Login,Signup, Welcome,Home, Trends,Calendar,Settings } from "./screens";
+import { Login,Signup, Welcome,Home, Trends,Calendars,Settings } from "./screens";
 
 
 const Stack = createNativeStackNavigator();
@@ -25,8 +25,8 @@ function MainAppTabs() {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Trends') {
             iconName = focused ? 'trending-up' : 'trending-up-outline';
-          } else if (route.name === 'Calendar') {
-            iconName = focused ? 'calendar' : 'calendar-outline';
+          } else if (route.name === 'Calendars') {
+            iconName = focused ? 'calendars' : 'calendars-outline';
           } else if (route.name === 'Settings') {
             iconName = focused ? 'settings' : 'settings-outline';
           }
@@ -41,7 +41,7 @@ function MainAppTabs() {
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Trends" component={Trends} />
-      <Tab.Screen name="Calendar" component={Calendar} />
+      <Tab.Screen name="Calendars" component={Calendars} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );

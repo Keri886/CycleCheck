@@ -3,7 +3,7 @@ import Welcome from "./Welcome";
 import Signup from "./Signup";
 import Home from "./Home";
 import Trends from "./Trends";
-import Calendar from "./Calendar";
+import Calendars from "./Calendars";
 import Settings from "./Settings";
 
 export {
@@ -12,6 +12,6 @@ export {
     Signup,
     Home,
     Trends,
-    Calendar,
+    Calendars,
     Settings
 }
