@@ -41,19 +41,19 @@ const Trends = () => {
 
     const chartData = {
 
-      labels: ["12/4", "12/5", "12/6", "12/7", "12/8", "12/9", "12/10"], 
+      labels: ["12/4", "12/5", "12/6", "12/7", "12/8", "12/9", "12/10", "12/11", "12/12"], 
       // Replace with 
       // labels: [userDate.Date]
       datasets: [
         {
-          data: [36.6, 36.7, 36.5, 36.8, 36.5, 36.9, 37.0],
+          data: [36.6, 36.5, 36.6, 36.6, 36.6, 36.7, 36.8, 36.9,36.9,36.9],
           // Peplace with 
           //data: [userDate.Temperature],
           color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
           strokeWidth: 2
         }
       ],
-      legend: ["Temperature over the week"]
+      legend: ["Basal Body Temperature tracking"]
     };
 
     const handleDelete = async (id) => {
@@ -98,7 +98,7 @@ return (
                                                                    {/*Create Chart */}  
         <LineChart
         data={chartData}
-        width={Dimensions.get('window').width - 20} // from react-native
+        width={Dimensions.get('window').width - 10} // from react-native
         height={220}
         chartConfig={{
           backgroundColor: COLORS.primary,
@@ -111,7 +111,7 @@ return (
             borderRadius: 16
           },
           propsForDots: {
-            r: "6",
+            r: "5",
             strokeWidth: "2",
             stroke: "#ffa726"
           }

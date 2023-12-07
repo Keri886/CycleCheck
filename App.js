@@ -26,7 +26,7 @@ function MainAppTabs() {
           } else if (route.name === 'Trends') {
             iconName = focused ? 'trending-up' : 'trending-up-outline';
           } else if (route.name === 'Calendars') {
-            iconName = focused ? 'calendars' : 'calendars-outline';
+            iconName = focused ? 'calendar' : 'calendar-outline';
           } else if (route.name === 'Settings') {
             iconName = focused ? 'settings' : 'settings-outline';
           }
