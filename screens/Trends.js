@@ -9,14 +9,18 @@ import { deleteDoc, doc ,Timestamp, collection, query, where, getDocs, orderBy,o
 
 const Trends = () => {
     const [userData, setUserData] = useState([]);
-    
+    //const auth = getAuth();
+    //const user = auth.currentUser;
     
     useEffect(()=> {
-      const q = query(collection(db, "temperatures"));
+     // if (user) {
+        //const uid = user.uid;
+      const q = query(collection(db, "temperatures" ));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
        const userData = [];
        querySnapshot.forEach((doc) => {
         const data = doc.data();
+        console.log(data);
         const date = data.Date?.toDate(); // Convert Timestamp to JavaScript Date object
         userData.push({
         id: doc.id,
@@ -28,6 +32,7 @@ const Trends = () => {
        console.log("userData: ", userData.join(", "));
       });
       return () => unsubscribe();
+ //   }
     },[]);
 
     const handleDelete = async (id) => {
@@ -58,7 +63,7 @@ const Trends = () => {
   <View style={styles.dataPoint}>
     <View style={styles.dataInfo}>
       <Text style={styles.dateText}>Date: {item.date?.toLocaleDateString()}</Text>
-      <Text style={styles.tempText}>Temperature: {item.temperatures}</Text>
+      <Text style={styles.tempText}>Temperature: {item.temperature}</Text>
     </View>
     <TouchableOpacity style={styles.deleteButton} onPress={() => handleDelete(item.id)}>
       <Text>Delete</Text>
