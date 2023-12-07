@@ -40,10 +40,15 @@ const Trends = () => {
     },[]);
 
     const chartData = {
-      labels: ["12/4", "12/5", "12/6", "12/7", "12/8", "12/9", "12/10"], // Replace with your desired date format
+
+      labels: ["12/4", "12/5", "12/6", "12/7", "12/8", "12/9", "12/10"], 
+      // Replace with 
+      // labels: [userDate.Date]
       datasets: [
         {
           data: [36.6, 36.7, 36.5, 36.8, 36.5, 36.9, 37.0],
+          // Peplace with 
+          //data: [userDate.Temperature],
           color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`,
           strokeWidth: 2
         }
@@ -90,6 +95,7 @@ const Trends = () => {
 return (
   <View style={styles.container}>
         <Text style={styles.header}>Report</Text>
+                                                                   {/*Create Chart */}  
         <LineChart
         data={chartData}
         width={Dimensions.get('window').width - 20} // from react-native
